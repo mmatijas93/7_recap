@@ -10,39 +10,29 @@
           integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
     <link rel="stylesheet" href="css/main.css">
-
+    <link rel="stylesheet" href="css/navbar.css">
     <title>7 recap!</title>
 </head>
 <body>
-<div class="container">
+<div>
+    <div class="filler one"></div>
+    <nav id="navbar">
+        <ul>
+            <li>One</li>
+            <li>Two</li>
+            <li>Three</li>
+        </ul>
+    </nav>
+    <div class="filler two"></div>
+
+    <div class="container">
     <header>
-          <div class="jumbotron" id="jt">
+        <div class="jumbotron" id="jt">
             <h1>Recap</h1>
             <p>Ponavljanje gradiva sa fokusom na pycharm i git</p>
-          </div>
+        </div>
     </header>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</div>
 
 
 
@@ -61,5 +51,30 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
         integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
         crossorigin="anonymous"></script>
+<script>
+    (function($) {
+    "use strict";
+
+    var $navbar = $("#navbar"),
+        y_pos = $navbar.offset().top,
+        height = $navbar.height();
+
+    $(document).scroll(function() {
+        var scrollTop = $(this).scrollTop();
+
+        if (scrollTop > y_pos + height) {
+            $navbar.addClass("navbar-fixed").animate({
+                top: 0
+            });
+        } else if (scrollTop <= y_pos) {
+            $navbar.removeClass("navbar-fixed").clearQueue().animate({
+                top: "-48px"
+            }, 0);
+        }
+    });
+
+})(jQuery, undefined);
+</script>
+
 </body>
 </html>
